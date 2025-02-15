@@ -54,11 +54,11 @@ MIT License
 
 ```swift
 func testExample() {
-    pr("这将在所有测试完成后打印。")
+    pr("所有测试完成后打印")
 }
 
 func testImmediatePrint() {
-    pr("这将立即打印", force: true)
+    pr("立即打印", force: true)
 }
 ```
 
