@@ -18,6 +18,8 @@ Add `XCTestDelayPrinter` to your Swift package dependencies.
 Use `pr` within XCTestCase subclasses:
 
 ```swift
+import XCTestDelayPrinter
+
 func testExample() {
     pr("This will be printed after all tests.")
 }
@@ -53,6 +55,8 @@ MIT License
 在 XCTestCase 子类中使用 `pr`：
 
 ```swift
+import XCTestDelayPrinter
+
 func testExample() {
     pr("所有测试完成后打印")
 }
