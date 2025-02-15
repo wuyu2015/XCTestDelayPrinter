@@ -1,7 +1,7 @@
 import XCTest
 
 class XCTestDelayPrinter {
-    static let shared = XCTestDelayPrinter()
+    public static let shared = XCTestDelayPrinter()
     
     // Usage: XCTestDelayPrinter.shared.p(content to print)
     private init() {
@@ -10,16 +10,16 @@ class XCTestDelayPrinter {
     
     private var buf: [Any] = []
     
-    func pr(_ items: Any...) {
+    public func pr(_ items: Any...) {
         // Store the content for delayed printing
         buf.append(contentsOf: items)
     }
     
-    func clear() {
+    public func clear() {
         buf.removeAll()
     }
     
-    func printAll() {
+    public func printAll() {
         buf.forEach {
             print($0)
         }
