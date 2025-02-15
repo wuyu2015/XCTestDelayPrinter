@@ -33,7 +33,7 @@ MIT License
 
 ---
 
-# XCTestDelayPrinter （中文）
+# XCTestDelayPrinter 中文说明
 
 一个轻量级的 XCTest 工具包，解决了两个问题：
 
