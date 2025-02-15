@@ -1,6 +1,6 @@
 import XCTest
 
-class XCTestDelayPrinter {
+public class XCTestDelayPrinter {
     public static let shared = XCTestDelayPrinter()
     
     // Usage: XCTestDelayPrinter.shared.p(content to print)
