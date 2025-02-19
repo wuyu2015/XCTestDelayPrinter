@@ -42,21 +42,17 @@ func testDelayedReturnString() {
 
 func testDelayedComputation() {
     delay {
-        func testDelaySleep() {
-            delay {
-                print("Sleep start")
-                // 1
-                sleep(1)
-                print(1)
-                // 2
-                sleep(1)
-                print(2)
-                // 3
-                sleep(1)
-                print(3)
-                return "Sleep end"
-            }
-        }
+        print("Sleep start")
+        // 1
+        sleep(1)
+        print(1)
+        // 2
+        sleep(1)
+        print(2)
+        // 3
+        sleep(1)
+        print(3)
+        return "Sleep end"
     }
 }
 ```
@@ -111,21 +107,17 @@ func testDelayedReturnString() {
 
 func testDelayedComputation() {
     delay {
-        func testDelaySleep() {
-            delay {
-                print("Sleep start")
-                // 1
-                sleep(1)
-                print(1)
-                // 2
-                sleep(1)
-                print(2)
-                // 3
-                sleep(1)
-                print(3)
-                return "Sleep end"
-            }
-        }
+        print("Sleep start")
+        // 1
+        sleep(1)
+        print(1)
+        // 2
+        sleep(1)
+        print(2)
+        // 3
+        sleep(1)
+        print(3)
+        return "Sleep end"
     }
 }
 ```
