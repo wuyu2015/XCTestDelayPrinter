@@ -8,20 +8,33 @@ public class XCTestDelayPrinter {
         XCTestObservationCenter.shared.addTestObserver(XCTestDelayPrinterObserver())
     }
     
-    private var buf: [Any] = []
+    private var prBuf: [Any] = []
+    private var fnBuf: [() -> Any] = []
     
     public func pr(_ items: Any...) {
         // Store the content for delayed printing
-        buf.append(contentsOf: items)
+        prBuf.append(contentsOf: items)
+    }
+    
+    public func delay(_ fn: @escaping () -> Any) {
+        // Store the content for delayed functions
+        fnBuf.append(fn)
     }
     
     public func clear() {
-        buf.removeAll()
+        prBuf.removeAll()
+        fnBuf.removeAll()
     }
     
     public func printAll() {
-        buf.forEach {
+        prBuf.forEach {
             print($0)
+        }
+    }
+    
+    public func runAll() {
+        fnBuf.forEach {
+            print($0())
         }
     }
 }
@@ -49,6 +62,7 @@ final class XCTestDelayPrinterObserver: NSObject, XCTestObservation {
         if isSelectedTests {
             // Selected tests: print the stored output
             XCTestDelayPrinter.shared.printAll()
+            XCTestDelayPrinter.shared.runAll()
         }
         // After running all tests, clear the stored output without printing
         XCTestDelayPrinter.shared.clear()

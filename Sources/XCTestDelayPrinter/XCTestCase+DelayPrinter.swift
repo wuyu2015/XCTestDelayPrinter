@@ -13,4 +13,9 @@ extension XCTestCase {
             }
         }
     }
+    
+    // Use delay(_) in the XCTestCase subclass
+    public func delay(_ fn: @escaping () -> Any) {
+        XCTestDelayPrinter.shared.delay(fn)
+    }
 }
