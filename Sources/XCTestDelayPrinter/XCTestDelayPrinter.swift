@@ -8,13 +8,27 @@ public class XCTestDelayPrinter {
         XCTestObservationCenter.shared.addTestObserver(XCTestDelayPrinterObserver())
     }
     
-    private var prBuf: [Any] = []
-    private var fnBuf: [() -> Any] = []
+    // MARK: pr
     
-    public func pr(_ items: Any...) {
+    // [items, separator, terminator]
+    private var prBuf: [([Any], String, String)] = []
+    
+    public func pr(_ items: Any..., separator: String = " ", terminator: String = "\n") {
         // Store the content for delayed printing
-        prBuf.append(contentsOf: items)
+        prBuf.append((items, separator, terminator))
     }
+    
+    public func pr(items: [Any], separator: String = " ", terminator: String = "\n") {
+        guard !items.isEmpty else {
+            return
+        }
+        // Store the content for delayed printing
+        prBuf.append((items, separator, terminator))
+    }
+    
+    // MARK: delay
+    
+    private var fnBuf: [() -> Any] = []
     
     public func delay(_ fn: @escaping () -> Any) {
         // Store the content for delayed functions
@@ -28,7 +42,14 @@ public class XCTestDelayPrinter {
     
     public func printAll() {
         prBuf.forEach {
-            print($0)
+            let (arr, separator, terminator) = $0
+            for i in 0..<arr.count - 1 {
+                print(arr[i], terminator: separator)
+            }
+            if arr.count > 1 {
+                print(arr.last!, terminator: "")
+            }
+            print(terminator: terminator)
         }
     }
     
@@ -38,6 +59,8 @@ public class XCTestDelayPrinter {
         }
     }
 }
+
+// MARK: Observer
 
 final class XCTestDelayPrinterObserver: NSObject, XCTestObservation {
     private var isSelectedTests = false

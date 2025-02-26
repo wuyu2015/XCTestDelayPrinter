@@ -2,15 +2,13 @@ import XCTest
 
 extension XCTestCase {
     // Use pr(_) in the XCTestCase subclass
-    public func pr(_ items: Any..., force: Bool = false) {
+    public func pr(_ items: Any..., separator: String = " ", terminator: String = "\n", force: Bool = false) {
         if force {
             items.forEach {
-                print($0)
+                print($0, separator: separator, terminator: terminator)
             }
         } else {
-            items.forEach {
-                XCTestDelayPrinter.shared.pr($0)
-            }
+            XCTestDelayPrinter.shared.pr(items: items, separator: separator, terminator: terminator)
         }
     }
     
