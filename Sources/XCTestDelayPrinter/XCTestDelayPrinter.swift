@@ -43,13 +43,14 @@ public class XCTestDelayPrinter {
     public func printAll() {
         prBuf.forEach {
             let (arr, separator, terminator) = $0
+            if arr.count == 1 {
+                print(arr[0], terminator: terminator)
+                return
+            }
             for i in 0..<arr.count - 1 {
                 print(arr[i], terminator: separator)
             }
-            if arr.count > 1 {
-                print(arr.last!, terminator: "")
-            }
-            print(terminator: terminator)
+            print(arr.last!, terminator: terminator)
         }
     }
     
