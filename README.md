@@ -10,7 +10,7 @@ A lightweight XCTest utility package that solves 2 problems:
 Add `XCTestDelayPrinter` to your Swift package dependencies.
 
 ```swift
-.package(url: "https://github.com/wuyu2015/XCTestDelayPrinter", from: "1.0.1")
+.package(url: "https://github.com/wuyu2015/XCTestDelayPrinter", from: "1.0.2")
 ```
 
 ## Usage
@@ -75,7 +75,7 @@ MIT License
 将 `XCTestDelayPrinter` 添加到 Swift 包依赖中。
 
 ```swift
-.package(url: "https://github.com/wuyu2015/XCTestDelayPrinter", from: "1.0.1")
+.package(url: "https://github.com/wuyu2015/XCTestDelayPrinter", from: "1.0.2")
 ```
 
 ## 使用
