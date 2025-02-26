@@ -6,9 +6,16 @@ final class PrTests: XCTestCase {
         pr("Hello world!")
     }
     
-    func testPr2() {
+    func test2() {
         pr("Hello world!", "a", "b", "c", separator: ",", terminator: " >> ")
         pr("⚽️", "🏀", "🎾", "⚾️", separator: "👌")
-        // output: Hello world!,a,b,c >> ⚽️👌🏀👌🎾👌⚾️
+        // Hello world!,a,b,c >> ⚽️👌🏀👌🎾👌⚾️
+    }
+    
+    func test3() {
+        pr("Force output:", terminator: " ", force: true)
+        pr("Hello world!", "a", "b", "c", separator: ",", terminator: " >> ", force: true)
+        pr("⚽️", "🏀", "🎾", "⚾️", separator: "👌", force: true)
+        // Force output: Hello world!,a,b,c >> ⚽️👌🏀👌🎾👌⚾️
     }
 }

@@ -4,9 +4,14 @@ extension XCTestCase {
     // Use pr(_) in the XCTestCase subclass
     public func pr(_ items: Any..., separator: String = " ", terminator: String = "\n", force: Bool = false) {
         if force {
-            items.forEach {
-                print($0, separator: separator, terminator: terminator)
+            if items.count == 1 {
+                print(items[0], terminator: terminator)
+                return
             }
+            for i in 0..<items.count - 1 {
+                print(items[i], terminator: separator)
+            }
+            print(items.last!, terminator: terminator)
         } else {
             XCTestDelayPrinter.shared.pr(items: items, separator: separator, terminator: terminator)
         }
